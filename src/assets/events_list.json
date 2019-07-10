@@ -1,0 +1,40 @@
+{
+    "events":[
+        {
+            "name": "Bollywood Dance Workshop",
+            "image":"assets/bollywood.jpg",
+            "date" : "15 Jul 2019",
+            "seats":2
+        },
+        {
+            "name": "An hour of standup by Manoj Prabhakar",
+            "image":"assets/evam.jpg",
+            "date" : "17 Jul 2019",
+            "seats":6
+        },
+        {
+            "name": "Comedy Show by Shankar Chungani",
+            "image":"assets/shankar.jpg",
+            "date" : "27 Jul 2019",
+            "seats":6
+        },
+        {
+            "name": "Sunburn Festival - Magic Show",
+            "image":"assets/sunburn.jpg",
+            "date" : "06 Aug 2019",
+            "seats":6
+        },
+        {
+            "name": "Standup Comedy by Amit Tandon",
+            "image":"assets/tef-1.jpg",
+            "date" : "16 Aug 2019",
+            "seats": 0
+        },
+        {
+            "name": "Music by Zakir Hussain",
+            "image":"assets/ustad-zakir.jpg",
+            "date" : "26 Aug 2019",
+            "seats": 0
+        }
+    ]
+  }

@@ -1,0 +1,97 @@
+
+<h2>{{eventName}}</h2>
+<h4>Number of available seats : {{seats}}</h4>
+
+<div class="success" *ngIf="successmsg">
+    Tickets Booked !!!
+  </div>
+
+  <div class="container">
+      <form [formGroup]="form1"   novalidate>
+        <div class="row">
+          <div class="col-25">
+              <label><b>Name</b></label> 
+          </div>
+          <div class="col-75">
+              <input type="text" placeholder="Enter Name"  formControlName="name" required> 
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Please enter your name</div>
+                <div *ngIf="f.name.errors.pattern">Only letters and spaces are
+allowed</div>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+              <label><b>Email</b></label>
+          </div>
+          <div class="col-75">
+              <input type="text" placeholder="Enter Email" formControlName="email" >
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Please enter your email</div>
+                <div *ngIf="f.email.errors.email">Invalid email</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+              <label><b>PhoneNumber</b></label> 
+          </div>
+          <div class="col-75">
+              <input type="text" placeholder="Enter Phone Number" maxlength="10" formControlName="number" > 
+              <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                Please enter 10 digit phone number
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+              <label><b>No. Of Seats</b></label> 
+          </div>
+          <div class="col-75">
+              <select #seat (change)="changeInSeats(seat.value)" formControlName="seats">
+                  <option value="">--Select--</option>
+                  <option *ngFor="let seat of seatsArr">{{seat}}</option> 
+                </select>
+                <div *ngIf="submitted && f.seats.errors && f.seats.errors.required" class="invalid-feedback">
+                    Please enter number of seats
+                </div>
+                <div *ngIf="submitted && f.seats.errors && f.seats.errors.outsideRange" class="invalid-feedback">
+                    Number of seats selected is more than available seats
+                </div>
+          </div>
+        </div>
+
+        <div  *ngIf="NoOfAttendees >1">
+          <div formArrayName="attendees"
+  *ngFor="let item of attndess; let i = index;">
+ 
+  <div class="col-25" >
+    <label id="sub_attn"><b>Name Of {{item}} </b></label> 
+    </div>
+    <div [formGroupName]="i">
+      <input id="sub_ip" type="text" placeholder="Enter Name" #attendee name="attendee{{i}}" formControlName="attendees" > 
+      <div *ngIf="form1.value.attendees[i].attendees === null || form1.value.attendees[i].attendees === ''" class="invalid-feedback">
+        Please enter the name of {{item}}
+    </div>
+  
+    </div>
+</div>
+
+        </div>
+        
+        <div class="row">
+            <button *ngIf="!successmsg" type="submit" value="Submit" (click)="Cancel()"> Cancel</button>
+          <button *ngIf="!successmsg" type="submit" style=" margin-left: 55%" value="Submit" (click)="onSubmit()" > Submit</button>
+          <button *ngIf="successmsg" style="background-color: gray"  disabled type="submit" value="Submit" > Cancel</button>
+          <button *ngIf="successmsg" style="background-color: gray; margin-left: 55%" disabled type="submit" value="Submit"  > Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="data" *ngIf="successmsg">
+       Booking Details :{{data}}
+      </div>
+
+   
+    

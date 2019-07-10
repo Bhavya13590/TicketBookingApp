@@ -1,0 +1,22 @@
+<div class="block_input">
+<input id="input_search" #inputBox type="text" size="40" placeholder="SEARCH EVENTS" height="30px" (keyup)="transform2(inputBox.value)">
+</div>
+
+<div class="row">
+<ng-container *ngIf="eventsDisplay?.length>0">
+<div class="col-md-3 block_events" *ngFor="let event of eventsDisplay">
+  <div class="block_top"> <img src={{event?.image}} ></div>
+  <div class="block_bottom">
+    {{event?.name}}<br>
+    Date :{{event?.date}}<br>
+    Seats:{{event?.seats}}<br>
+    <button *ngIf="event?.seats > 0" class="button_book" (click)="NavigateToEventBookings(event)">Book Now</button>
+    <button *ngIf="event?.seats === 0" class="button_sold" disabled>Sold Out</button>
+  </div>
+</div>
+</ng-container>
+
+<ng-container *ngIf="eventsDisplay?.length===0">
+<h2>No Results Found !!!</h2>
+</ng-container>
+</div>
